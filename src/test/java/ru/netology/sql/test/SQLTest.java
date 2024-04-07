@@ -18,13 +18,13 @@ public class SQLTest {
     }
 
     @AfterAll
-    void tearDownAll() {
+    static void tearDownAll() {
         cleanDataBase();
     }
 
     @BeforeEach
     void setUp() {
-        loginPage = open("http://185.119.57.172", loginPage.class);
+        loginPage = open("http://185.119.57.172:9999", LoginPage.class);
     }
 
     @Test
@@ -50,6 +50,6 @@ public class SQLTest {
         verificationPage.verifyVerificationPageVisibility();
         var verificationCode = DataHelper.generateRandomVerificationCode();
         verificationPage.verify(verificationCode.getCode());
-        verificationPage.verifyErrorNotification("Ошибка! \nНеверно указан код! Попробуйте еще раз.");
+        verificationPage.verifyErrorNotification("Ошибка! \nНеверно указан код! Попробуйте ещё раз.");
     }
 }
